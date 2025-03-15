@@ -1,0 +1,5 @@
+
+config BR2_PACKAGE_LDD
+	bool "ldd"
+	help
+	  Enable the ldd package, which includes misc-modules and scull kernel modules.
