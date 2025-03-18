@@ -11,16 +11,17 @@ jobs:
         runs-on: self-hosted
         timeout-minutes: 120
         steps:
-          - uses: actions/checkout@v2
-          - name: Checkout submodules
-            run: git submodule update --init --recursive
-          - uses: webfactory/ssh-agent@v0.5.3
-	  - name: Set up SSH key
-		run: |
+          - name: Set up SSH key
+	    run: |
 	    mkdir -p ~/.ssh
 	    echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
 	    chmod 600 ~/.ssh/id_rsa
 	    ssh-keyscan github.com >> ~/.ssh/known_hosts
+          - uses: actions/checkout@v2
+          - name: Checkout submodules
+            run: git submodule update --init --recursive
+          - uses: webfactory/ssh-agent@v0.5.3
+
 
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
