@@ -1,0 +1,5 @@
+
+config BR2_PACKAGE_AESDCHAR
+	bool "aesdchar"
+	help
+	  Enable the aesdchar package, which includes char device driver and multithread application.
